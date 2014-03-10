@@ -1,0 +1,5 @@
+# Requirements for testing Respect on Python 2.6.
+
+-r base_test.txt
+mock
+unittest2
