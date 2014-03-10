@@ -9,5 +9,9 @@ python:
 script: 
     coverage run --source respect setup.py test
 
+# notifications based on http://docs.travis-ci.com/user/notifications/
+notifications:
+    email: false
+
 after_success:
     coveralls
