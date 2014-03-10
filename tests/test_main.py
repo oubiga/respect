@@ -18,5 +18,15 @@ else:
     import unittest
 
 
+class TestArgParsing(unittest.TestCase):
+
+    def test_parse_respect_args(self):
+        args = main.parse_respect_args(['oubiga', 'oubiga@yahoo.es'])
+        self.assertEqual(args['<username>'], 'oubiga')
+        self.assertEqual(args['<email>'], 'oubiga@yahoo.es')
+        self.assertIsInstance(args, dict)
+
+
+
 if __name__ == '__main__':
     unittest.main()
