@@ -32,8 +32,8 @@ if sys.version < '3':
 setup(
     name='respect',
     version=respect.__version__,
-    description="A command-line tool to interact with the Github API, \
-        e.g. looking for user's stars who is interesting for you.",
+    description="A command-line tool to interact with the Github API. \
+        Getting to know software developers you Respect.",
     long_description=readme + '\n\n' + history,
     author='Pablo Oubiña',
     author_email='oubiga@yahoo.es',
@@ -53,6 +53,7 @@ setup(
     zip_safe=False,
     classifiers=[
         'Development Status :: 1 - Planning',
+        'Topic :: Utilities',
         'Environment :: Console',
         'Intended Audience :: Developers',
         'Natural Language :: English',
