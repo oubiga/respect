@@ -16,6 +16,10 @@ readme = open('README.rst').read()
 requirements = ['docopt>=0.6.1', 'requests>=2.2.1']
 test_requirements = []
 
+# Add Python 2.6-specific dependencies
+if sys.version_info[:2] < (2, 7):
+    test_requirements.append('unittest2')
+
 if sys.version < '3':
     test_requirements.append('mock')
 
