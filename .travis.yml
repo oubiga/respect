@@ -1,15 +1,15 @@
 language: python
 
 python:
-  - "3.3"
-  - "2.7"
-  - "2.6"
+    - "3.3"
+    - "2.7"
+    - "2.6"
 
-  install:
- - pip install coveralls
- - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install -r requirements/test_26.txt; fi
- - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then pip install -r requirements/test_27.txt; fi
- - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then pip install -r requirements/test_33.txt; fi
+install:
+    - pip install coveralls
+    - if [[ $TRAVIS_PYTHON_VERSION == '2.6' ]]; then pip install -r requirements/test_26.txt; fi
+    - if [[ $TRAVIS_PYTHON_VERSION == '2.7' ]]; then pip install -r requirements/test_27.txt; fi
+    - if [[ $TRAVIS_PYTHON_VERSION == '3.3' ]]; then pip install -r requirements/test_33.txt; fi
 
 # command to run tests, e.g. python setup.py test
 script: 
