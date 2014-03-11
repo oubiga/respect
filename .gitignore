@@ -19,6 +19,7 @@ pip-log.txt
 # Unit test / coverage reports
 .coverage
 .tox
+nosetests.xml
 
 #Translations
 *.mo
@@ -26,9 +27,6 @@ pip-log.txt
 # Local file cruft/auto-backups
 .DS_Store
 *~
-
-# Coverage
-coverage
 
 # Sphinx
 docs/_build
