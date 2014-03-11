@@ -10,9 +10,13 @@ Tests for `respect.main` module.
 
 import sys
 import requests
-from urlparse import urljoin
 
 from respect import main
+
+if sys.version < '3':
+    from urlparse import urljoin
+else:
+    from urllib.parse import urljoin
 
 if sys.version_info[:2] < (2, 7):
     import unittest2 as unittest
