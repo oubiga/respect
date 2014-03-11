@@ -5,13 +5,18 @@
 import os
 import sys
 
+import respect
+
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
 
-readme = open('README.rst').read()
+with open('README.rst') as f:
+    readme = f.read()
+with open('HISTORY.rst') as f:
+    history = f.read()
 
 requirements = ['docopt>=0.6.1', 'requests>=2.2.1']
 test_requirements = []
@@ -26,10 +31,10 @@ if sys.version < '3':
 
 setup(
     name='respect',
-    version='0.0.1',
+    version=respect.__version__,
     description="A command-line tool to interact with the Github API, \
         e.g. looking for user's stars who is interesting for you.",
-    long_description=readme,
+    long_description=readme + '\n\n' + history,
     author='Pablo Oubiña',
     author_email='oubiga@yahoo.es',
     url='https://github.com/oubiga/respect',
