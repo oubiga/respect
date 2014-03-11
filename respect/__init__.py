@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-respect 
+respect
 _______
 
 """

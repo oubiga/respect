@@ -39,6 +39,13 @@ class TestGithubBasicAuthentication(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
 
 
+class TestGithubBadBasicAuthentication(unittest.TestCase):
+
+    def test_github_bad_basic_authenthication(self):
+        r = requests.get(urljoin(GITHUB_BASE_URL, GITHUB_USER), auth=('oubiga', 'xxxxxxxx'))
+        self.assertEqual(r.status_code, 401)
+
+
 class TestGithubGetAuthenticatedUser(unittest.TestCase):
 
     def test_github_get_not_authenthicated_user(self):
