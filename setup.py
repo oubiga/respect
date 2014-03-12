@@ -36,7 +36,6 @@ setup(
         Getting to know software developers you Respect.",
     long_description=readme + '\n\n' + history,
     author='Pablo Oubiña',
-    author_email='oubiga@yahoo.es',
     url='https://github.com/oubiga/respect',
     packages=[
         'respect',
