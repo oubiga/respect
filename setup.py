@@ -64,8 +64,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
     ],
-    keywords='respect, Python, stars, user, github, \
-        repository, code, software',
+    keywords="respect github repository stars user code software command",
     test_suite='tests',
     tests_require=test_requirements
 )
