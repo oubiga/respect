@@ -9,9 +9,10 @@ Tests for `respect.main` module.
 """
 
 import sys
+import types
 import requests
 
-from respect import main
+from respect import main, spelling
 
 if sys.version < '3':
     from urlparse import urljoin
@@ -55,6 +56,13 @@ class TestGithubGetAuthenticatedUser(unittest.TestCase):
     def test_github_get_not_authenthicated_user(self):
         r = requests.get(urljoin(GITHUB_BASE_URL, GITHUB_USER))
         self.assertEqual(r.status_code, 401)
+
+
+class TestResultsStarredUsersByLanguages(unittest.TestCase):
+
+    def test_generation_results_starred_users_languages(self):
+        results = spelling.starred_users_by_languages()
+        self.assertIsInstance(results, types.GeneratorType)
 
 
 
