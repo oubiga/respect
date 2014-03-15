@@ -69,7 +69,7 @@ class TestGuessesSpellChecker(unittest.TestCase):
 
     def test_guesses_spellchecker(self):
         guesses = spelling.spellchecker('oubiga')
-        self.assertIsInstance(guesses, types.ListType)
+        self.assertIsInstance(guesses, list)
 
 
 if __name__ == '__main__':
