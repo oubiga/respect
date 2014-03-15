@@ -65,6 +65,14 @@ class TestResultsStarredUsersByLanguages(unittest.TestCase):
         self.assertIsInstance(results, types.GeneratorType)
 
 
+class TestGuessesSpellChecker(unittest.TestCase):
+
+    def test_guesses_spellchecker(self):
+        guesses = spelling.spellchecker('oubiga')
+        self.assertIsInstance(guesses, types.ListType)
+
 
 if __name__ == '__main__':
     unittest.main()
+
+
