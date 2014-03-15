@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 
 import sys
 from getpass import getpass
@@ -44,14 +45,14 @@ def main():
 
     args = parse_respect_args(sys.argv[1:])
     r = requests.get(urljoin(GITHUB_USERS, args['<username>']))
-    print args
+    print(args)
 
     if r.status_code == 404 or r.status_code == 403:
-        print 'input the username and password'
+        print('input the username and password')
     elif r.status_code == 200:
-        print "yes"
+        print("yes")
     else:
-        print 'no'
+        print('no')
 
 
 if __name__ == '__main__':
