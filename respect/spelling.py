@@ -38,10 +38,19 @@ def starred_users_by_languages():
             e = sys.exc_info(1)
             pass
 
-        
-        
 
-
-def spellchecker():
-    pass
-
+def spellchecker(word):
+    """
+    Looks for possible mistakes, i.e., deletion, insertion, transposition and alteration.
+    If the target is 'audreyr' deletion is 'adreyr', insertion is 'audreeyr', transposition is
+    'aurdeyr' and alteration is 'audriyr'.
+    Returns a list of possible words sorted by matching the same length.
+    """
+    splits = [(word[:i], word[i:]) for i in range(len(word) + 1)]
+    deletes = [a + b[1:] for a, b in splits if b]
+    transposes = [a + b[1] + b[0] + b[2:] for a, b in splits if len(b)>1]
+    replaces = [a + c + b[1:] for a, b in splits for c in ALPHABET if b]
+    inserts = [a + c + b for a, b in splits for c in ALPHABET]
+    guesses = set(deletes + transposes + replaces + inserts)
+    sorted_guesses = sorted(guesses, key=lambda w: len(w) == len(word), reverse=True)
+    return sorted_guesses
