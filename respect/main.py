@@ -24,13 +24,18 @@ def parse_respect_args(args):
     Respect
 
     Usage:
-        respect <username> [--vcs=<name>]
+        respect <username> [--pages=<num>]
+        respect <username> [stars | starred | repos | languages | followers | following] [--filter=<qualifier>] [--pages=<num>]
+        respect <username> <language>... [--pages=<num>]
+        respect <username> <repo>... [--order=<ord>] [--pages=<num>]
         respect <username> <email>
         respect <username> <email> [--speed=<kn>]
 
     Options:
-        -h, --help    Show this information.
-        --vcs=<name>  Version control system to explore [default: 'gh'].
+        -h, --help              Show this information.
+        --filter=<qualifier>    Filter the result [default: None].
+        --pages=<num>           Number of pages to print [default: 20].
+        --order=<ord>           The sort order if sort parameter is provided [default: 'desc'].
 
     '''
     args = docopt(parse_respect_args.__doc__, argv=args)
