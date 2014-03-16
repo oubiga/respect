@@ -4,11 +4,20 @@ from __future__ import print_function
 
 import sys
 from getpass import getpass
+from datetime import datetime
+import pprint
 
 from docopt import docopt 
 import requests
 
 from .spelling import spellchecker
+
+PY3 = sys.version > '3'
+
+if PY3:
+    pass
+else:
+    input = raw_input
 
 if sys.version < '3':
     from urlparse import urljoin
@@ -16,8 +25,34 @@ else:
     from urllib.parse import urljoin
 
 GITHUB_BASE_URL = 'https://api.github.com'
-GITHUB_USERS = urljoin(GITHUB_BASE_URL, 'users')
+GITHUB_USERS = 'https://api.github.com/users/'
 GITHUB_USER = 'user'
+
+
+def dispach(args, response):
+    try:
+        print(response)
+        user = args['<username>']
+        output = response.json()
+        created_at = datetime.strptime(output['created_at'], "%Y-%m-%dT%H:%M:%SZ")
+        joined = created_at.strftime("%b %d, %Y")
+        pprint.pprint(output, indent=4, depth=1)
+
+        print("\n{0}, aka {1}, joined Github on {2}, has {3} follower{4}, is following {5} {6} " 
+              "and has {7} public repositories.\n".format(output['name'].title().encode('utf-8'), 
+              output['login'], joined, output['followers'], "s"[int(output['followers'])==1:], 
+              output['following'], 'person' if abs(int(output['following'])) == 1 else 'people',
+              output['public_repos']))
+
+    except KeyError as e:
+        # the user arigo doesn't have the name attribute
+        print("\n{0} joined Github on {1}, has {2} follower{3}, is following {4} {5} and " 
+              "has {6} public repositories.\n".format(output['login'], joined,
+              output['followers'], "s"[int(output['followers'])==1:], output['following'], 
+              'person' if abs(int(output['following'])) == 1 else 'people',
+              output['public_repos']))
+
+
 
 def parse_respect_args(args):
     '''
@@ -53,13 +88,48 @@ def main():
     print(args)
 
     if r.status_code == 404 or r.status_code == 403:
-        print('input the username and password')
+        print('Input the username and password')
+        prompt = "Your username: "
+
+        if PY3:
+            username = input(prompt.encode('utf-8'))
+        else:
+            username = input(prompt.encode('utf-8')).decode('utf-8')
+
+        password = getpass("Your password: ")
+
+        s = requests.Session()
+        s.auth = (username, password)
+        print(args['<username>'])
+        r = s.get(urljoin(GITHUB_USERS, args['<username>']))
+        print(r)
+        return dispach(args, r)
+
+
     elif r.status_code == 200:
         print("yes")
+        return dispach(args, r)
     else:
         print('no')
 
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
