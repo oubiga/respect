@@ -31,9 +31,8 @@ GITHUB_USER = 'user'
 class TestArgParsing(unittest.TestCase):
 
     def test_parse_respect_args(self):
-        args = main.parse_respect_args(['oubiga', 'oubiga@yahoo.es'])
+        args = main.parse_respect_args(['oubiga'])
         self.assertEqual(args['<username>'], 'oubiga')
-        self.assertEqual(args['<email>'], 'oubiga@yahoo.es')
         self.assertIsInstance(args, dict)
 
 
