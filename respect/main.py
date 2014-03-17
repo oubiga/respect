@@ -29,28 +29,63 @@ GITHUB_USERS = 'https://api.github.com/users/'
 GITHUB_USER = 'user'
 
 
-def dispach(args, response):
-    try:
-        print(response)
+def dispach(args, response, session=None):
+
+    if args['stars']:
+        print('in stars')
         user = args['<username>']
-        output = response.json()
-        created_at = datetime.strptime(output['created_at'], "%Y-%m-%dT%H:%M:%SZ")
-        joined = created_at.strftime("%b %d, %Y")
-        pprint.pprint(output, indent=4, depth=1)
+        result = []
+        if session == None:
+            last_stars_count = True
+            rounds = 1
+            while last_stars_count != 0:
 
-        print("\n{0}, aka {1}, joined Github on {2}, has {3} follower{4}, is following {5} {6} " 
-              "and has {7} public repositories.\n".format(output['name'].title().encode('utf-8'), 
-              output['login'], joined, output['followers'], "s"[int(output['followers'])==1:], 
-              output['following'], 'person' if abs(int(output['following'])) == 1 else 'people',
-              output['public_repos']))
+                built_url = 'https://api.github.com/search/repositories?q=user:%s&page=%s' % (user, str(rounds))
+                r = requests.get(built_url)
+                print(r.json())
+                result.append(r.json()['items'][0])
+                last_stars_count = int(r.json()['items'][-1]['stargazers_count'])
+                rounds += 1
+                # return last_stars_count
+            print(result)
+            stars = 0
+            # TODO: respect alex stars fails here !!!!
+            # TODO: respect kennethreitz stars fails here !!!!
+            for i in result:
+                stars += int(i['stargazers_count'])
+            print(stars)
 
-    except KeyError as e:
-        # the user arigo doesn't have the name attribute
-        print("\n{0} joined Github on {1}, has {2} follower{3}, is following {4} {5} and " 
-              "has {6} public repositories.\n".format(output['login'], joined,
-              output['followers'], "s"[int(output['followers'])==1:], output['following'], 
-              'person' if abs(int(output['following'])) == 1 else 'people',
-              output['public_repos']))
+    else:
+
+        try:
+            print(response)
+            user = args['<username>']
+            output = response.json()
+            created_at = datetime.strptime(output['created_at'], "%Y-%m-%dT%H:%M:%SZ")
+            joined = created_at.strftime("%b %d, %Y")
+            pprint.pprint(output, indent=4, depth=1)
+            if output['name']:
+
+                print("\n{0}, aka {1}, joined Github on {2}, has {3} follower{4}, is following {5} {6} " 
+                      "and has {7} public repositories.\n".format(output['name'].title().encode('utf-8'), 
+                      output['login'], joined, output['followers'], "s"[int(output['followers'])==1:], 
+                      output['following'], 'person' if abs(int(output['following'])) == 1 else 'people',
+                      output['public_repos']))
+            else:
+                print("\n{0} joined Github on {1}, has {2} follower{3}, is following {4} {5} and "
+                      "has {6} public repositories.\n".format(output['login'], joined,
+                      output['followers'], "s"[int(output['followers'])==1:], output['following'],
+                      'person' if abs(int(output['following'])) == 1 else 'people', 
+                      output['public_repos']))
+
+
+        except KeyError as e:
+            # the user arigo doesn't have the name attribute
+            print("\n{0} joined Github on {1}, has {2} follower{3}, is following {4} {5} and " 
+                  "has {6} public repositories.\n".format(output['login'], joined,
+                  output['followers'], "s"[int(output['followers'])==1:], output['following'], 
+                  'person' if abs(int(output['following'])) == 1 else 'people',
+                  output['public_repos']))
 
 
 
@@ -103,7 +138,7 @@ def main():
         print(args['<username>'])
         r = s.get(urljoin(GITHUB_USERS, args['<username>']))
         print(r)
-        return dispach(args, r)
+        return dispach(args, r, s)
 
 
     elif r.status_code == 200:
