@@ -38,22 +38,29 @@ def dispach(args, response, session=None):
         if session == None:
             last_stars_count = True
             rounds = 1
-            while last_stars_count != 0:
+            content = True
+            while content:
 
                 built_url = 'https://api.github.com/search/repositories?q=user:%s&page=%s' % (user, str(rounds))
                 r = requests.get(built_url)
-                print(r.json())
-                result.append(r.json()['items'][0])
-                last_stars_count = int(r.json()['items'][-1]['stargazers_count'])
+                print(rounds)
+                try:
+                    result.extend(r.json()['items'])
+                except IndexError:
+                    content = False
+                    break
+                content = r.json()['items']
+                # last_stars_count = int(r.json()['items'][-1]['stargazers_count'])
                 rounds += 1
                 # return last_stars_count
             print(result)
             stars = 0
-            # TODO: respect alex stars fails here !!!!
-            # TODO: respect kennethreitz stars fails here !!!!
+            # TODO: respect bertez stars --verbose doesn't sort repositories by stars !!!!
             for i in result:
+                if args['--verbose']:
+                    print('"'+i['name']+'"', 'repository has', i['stargazers_count'], "stars.", sep=" ")
                 stars += int(i['stargazers_count'])
-            print(stars)
+            print(user, "has", stars, 'stars', sep=" ")
 
     else:
 
@@ -95,7 +102,8 @@ def parse_respect_args(args):
 
     Usage:
         respect <username> [--pages=<num>]
-        respect <username> [stars | starred | repos | languages | followers | following] [--filter=<qualifier>] [--pages=<num>]
+        respect <username> stars [--verbose]
+        respect <username> [starred | repos | languages | followers | following] [--filter=<qualifier>] [--pages=<num>]
         respect <username> <language>... [--pages=<num>]
         respect <username> <repo>... [--order=<ord>] [--pages=<num>]
         respect <username> <email>
@@ -105,6 +113,7 @@ def parse_respect_args(args):
         -h, --help              Show this information.
         --filter=<qualifier>    Filter the result [default: None].
         --pages=<num>           Number of pages to print [default: 20].
+        --verbose       Prints more information.
         --order=<ord>           The sort order if sort parameter is provided [default: 'desc'].
 
     '''
