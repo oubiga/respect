@@ -14,8 +14,7 @@ else:
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
 LANGUAGES = (
-    'javascript', 'ruby', 'python', 'java', 'php', 'c', 'c++', 'objective-c', 'shell', 'c#'
-    )
+    'javascript', 'ruby', 'python', 'java', 'php', 'c', 'c++', 'objective-c', 'shell', 'c#')
 BASE_URL = 'https://api.github.com/'
 SEARCH_USERS_URL = '/search/users'
 
