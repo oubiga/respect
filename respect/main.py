@@ -12,6 +12,7 @@ import requests
 
 from .spelling import spellchecker
 from .dispatch import dispatch
+from .utils import login
 
 PY3 = sys.version > '3'
 
@@ -35,22 +36,21 @@ def parse_respect_args(args):
     Respect
 
     Usage:
-        respect <username> [--pages=<num>]
+        respect <username> [--pages=<num>] [--repos=<rep>] [--followers=<foll>][--language=<lang>]
         respect <username> stars [--verbose]
         respect <username> repos [--language=<lang>]
-        respect <username> [starred | followers | following] [--filter=<qualifier>] [--pages=<num>]
-        respect <username> <language>... [--pages=<num>]
-        respect <username> <repo>... [--order=<ord>] [--pages=<num>]
+        respect <username> starred [--filter=<qualifier>] [--pages=<num>]
         respect <username> <email>
-        respect <username> <email> [--speed=<kn>]
+        respect -h | --help
 
     Options:
-        -h, --help                          Show this information.
-        --filter=<qualifier>                Filter the result [default: None].
-        --language=<lang>                   Repository language [default: ].
+        -h, --help                          Shows this help information.
+        --filter=<qualifier>                Filters the result [default: None].
+        --repos=<rep>                       Number of repositories [default: None].
+        --followers=<foll>                  Number of follwers [default: None].
+        --language=<lang>                   Filters by the repository language [default: None].
         --pages=<num>                       Number of pages to print [default: 20].
-        --verbose                           Prints more information.
-        --order=<ord>                       The sort order if sort parameter is provided [default: 'desc'].
+        --verbose                           Prints detailed information.
 
     '''
     args = docopt(parse_respect_args.__doc__, argv=args)
@@ -62,33 +62,17 @@ def main():
     Main entry point for the `respect` command.
 
     """
-
     args = parse_respect_args(sys.argv[1:])
+    print("processing...")
     r = requests.get(urljoin(GITHUB_USERS, args['<username>']))
-    print(args)
+    # print(args)
 
     if r.status_code == 404 or r.status_code == 403:
-        print('Input the username and password')
-        prompt = "Your username: "
-
-        if PY3:
-            username = input(prompt.encode('utf-8'))
-        else:
-            username = input(prompt.encode('utf-8')).decode('utf-8')
-
-        password = getpass("Your password: ")
-
-        s = requests.Session()
-        s.auth = (username, password)
-        print(args['<username>'])
-        r = s.get(urljoin(GITHUB_USERS, args['<username>']))
-        print(r)
-        return dispatch(args, r, s)
-
+        session = login(401, args=args)
+        return dispatch(args, r, session)
 
     elif r.status_code == 200:
-        print("yes")
-        return dispatch(args, r)
+        return dispatch(args, response=r)
     else:
         print('no')
 
