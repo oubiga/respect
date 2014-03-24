@@ -11,7 +11,6 @@ import requests
 
 from .utils import sanitize_qualifiers
 from .utils import login
-from .threads import get_responses
 
 
 def dispatch(args, response=None, session=None):
