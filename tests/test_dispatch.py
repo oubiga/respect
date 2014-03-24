@@ -22,7 +22,7 @@ else:
 
 class TestDispatchNotAllowedUsername(unittest.TestCase):
 
-    def test_dispatch_not_allowedUsername(self):
+    def test_dispatch_not_allowed_username(self):
         pass
 
 

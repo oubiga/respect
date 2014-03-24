@@ -26,6 +26,15 @@ class TestEmptyQualifiers(unittest.TestCase):
         qualifiers = utils.sanitize_qualifiers(repos=None, followers=None, language=None)
         self.assertEqual(qualifiers, '')
 
+class TestInvalidUsername(unittest.TestCase):
+
+    def test_dot_invalid_username(self):
+        validation = utils.validate_username('ou.bi.ga')
+        self.assertFalse(validation)
+
+    def test_underscore_invalid_username(self):
+        validation = utils.validate_username('ou_bi_ga')
+        self.assertFalse(validation)
 
 if __name__ == '__main__':
     unittest.main()

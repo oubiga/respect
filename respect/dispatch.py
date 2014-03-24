@@ -15,6 +15,7 @@ from .threads import get_responses
 
 
 def dispatch(args, response=None, session=None):
+    print(args)
     if args['<username>'] and args['bio']:
         try:
             user = args['<username>']
