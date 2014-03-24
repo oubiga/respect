@@ -13,8 +13,8 @@ else:
 
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-LANGUAGES = (
-    'javascript', 'ruby', 'python', 'java', 'php', 'c', 'c++', 'objective-c', 'shell', 'c#')
+LANGUAGES = ('javascript', 'ruby', 'python', 'java', 'php', 'c', 'c++', 'objective-c', 'shell',
+             'c#')
 BASE_URL = 'https://api.github.com/'
 SEARCH_USERS_URL = '/search/users'
 
@@ -40,8 +40,8 @@ def starred_users_by_languages():
 
 def spellchecker(word):
     """
-    Looks for possible mistakes, i.e., deletion, insertion, transposition and alteration.
-    If the target is 'audreyr' deletion is 'adreyr', insertion is 'audreeyr', transposition is
+    Looks for possible typos, i.e., deletion, insertion, transposition and alteration.
+    If the target is 'audreyr': deletion is 'adreyr', insertion is 'audreeyr', transposition is
     'aurdeyr' and alteration is 'audriyr'.
     Returns a list of possible words sorted by matching the same length.
     """

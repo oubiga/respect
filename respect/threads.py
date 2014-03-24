@@ -6,7 +6,6 @@ import time
 from threading import Thread, Lock
 import itertools
 
-
 import requests
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
