@@ -23,7 +23,8 @@ else:
 class TestEmptyQualifiers(unittest.TestCase):
 
     def test_empty_qualifiers(self):
-        pass
+        qualifiers = utils.sanitize_qualifiers(repos=None, followers=None, language=None)
+        self.assertEqual(qualifiers, '')
 
 
 if __name__ == '__main__':

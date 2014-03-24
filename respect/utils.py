@@ -105,7 +105,7 @@ def sanitize_qualifiers(repos=None, followers=None, language=None):
         else:
             raise AllowedLanguagesException
     except AllowedLanguagesException as e:
-        print(language.title(), "is not defined by Github.")
+        print(e)
 
     return qualifiers
 
