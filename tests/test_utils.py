@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 
 """
-test_dispatch
--------------
+test_utils
+----------
 
-Tests for `respect.dispatch` module.
+Tests for `respect.utils` module.
 """
 
 import sys
 import types
 import requests
 
-from respect import dispatch
+from respect import utils
 
 if sys.version_info[:2] < (2, 7):
     import unittest2 as unittest
@@ -20,9 +20,9 @@ else:
     import unittest
 
 
-class TestDispatchNotAllowedUsername(unittest.TestCase):
+class TestEmptyQualifiers(unittest.TestCase):
 
-    def test_dispatch_not_allowedUsername(self):
+    def test_empty_qualifiers(self):
         pass
 
 
