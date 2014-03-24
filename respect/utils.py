@@ -11,6 +11,8 @@ import re
 from docopt import docopt 
 import requests
 
+from .exceptions import AllowedLanguagesException
+
 PY3 = sys.version > '3'
 
 if PY3:
@@ -28,7 +30,7 @@ GITHUB_BASE_URL = 'https://api.github.com'
 GITHUB_USERS = 'https://api.github.com/users/'
 GITHUB_USER = 'user'
 
-ALLOWED_LANGUAGES = ['abap', 'actionscript', 'ada', 'agda', 'antlr', 'apex', 'applescript', 'arc',
+ALLOWED_LANGUAGES = ['', 'abap', 'actionscript', 'ada', 'agda', 'antlr', 'apex', 'applescript', 'arc',
 'arduino', 'asp', 'assembly', 'augeas', 'autohotkey', 'autoit', 'awk', 'blitzbasic', 'bluespec',
 'boo', 'brightscript', 'bro', 'c', 'c#', 'c++', 'ceylon', 'clean', 'clips', 'clojure', 'cobol',
 'coffeescript', 'coldfusion', 'coq', 'crystal', 'css', 'd', 'dart', 'dm', 'dot', 'dylan', 'ec',
@@ -98,16 +100,16 @@ def sanitize_qualifiers(repos=None, followers=None, language=None):
     if followers:
         qualifiers += 'followers:{} '.format(followers)
 
-    if language in ALLOWED_LANGUAGES:
+    if language in ALLOWED_LANGUAGES and not language == '':
         qualifiers += 'language:{} '.format(language)
+    elif language == '':
+        qualifiers += ''
     else:
         print(language.title(), "is not a allowed language.")
-        # TODO: handle this exception !!!!!!
-        raise Exception 
+        raise AllowedLanguagesException 
 
     print(qualifiers, 'yes')
     return qualifiers.replace('+', '>').replace('-', '<')
-
 
 
 def validate_username(username):
@@ -116,6 +118,6 @@ def validate_username(username):
     Valid usernames: oubiga, oubiga2000, oubi-ga, Oub75igA
     Invalid usernames: -oubiga, oub_iga, ou.biga
     """
-    result = re.match(r"^[^-][-a-zA-Z0-9]+$", username)
+    result = re.match(r"^[a-zA-Z0-9][-a-zA-Z0-9]+$", username)
     return not result == None
 
