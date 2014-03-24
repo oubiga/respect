@@ -13,6 +13,8 @@ import requests
 from .spelling import spellchecker
 from .dispatch import dispatch
 from .utils import login, validate_username
+from .exceptions import ConnectionErrorException
+
 
 PY3 = sys.version > '3'
 
@@ -26,9 +28,7 @@ if sys.version < '3':
 else:
     from urllib.parse import urljoin
 
-GITHUB_BASE_URL = 'https://api.github.com'
 GITHUB_USERS = 'https://api.github.com/users/'
-GITHUB_USER = 'user'
 
 
 def parse_respect_args(args):
@@ -36,21 +36,18 @@ def parse_respect_args(args):
     Respect
 
     Usage:
-        respect <username> [--repos=<rep>] [--followers=<foll>][--language=<lang>]
+        respect <username> [--repos=<rep>] [--followers=<foll>] [--language=<lang>]
+        respect <username> bio
         respect <username> stars [--verbose]
-        respect <username> repos [--language=<lang>]
-        respect <username> starred [--filter=<qualifier>]
-        respect <username> <email>
+        respect <username> repos [--verbose] [--language=<lang>]
         respect -h | --help
 
     Options:
         -h, --help                          Shows this help information.
         -v, --verbose                       Prints detailed information.
-        --filter=<qualifier>                Filters the result [default: None].
         -r <rep> --repos <rep>              Number of repositories [default: ].
         -f <foll> --followers <foll>        Number of followers [default: ].
         -l <lang> --language <lang>         Language name [default: ].
-
     '''
     args = docopt(parse_respect_args.__doc__, argv=args)
     return args
@@ -61,17 +58,16 @@ def main():
     Main entry point for the `respect` command.
 
     """
-    print("processing...")
     args = parse_respect_args(sys.argv[1:])
     if validate_username(args['<username>']):
-        pass
+        print("processing...")
     else:
         print("@"+args['<username>'], "is not a valid username.")
-        print("Username may only contain alphanumeric characters or dashes and cannot begin with a dash.")
+        print("Username may only contain alphanumeric ASCII characters or dashes and cannot begin with a dash.")
         return
     try:
         r = requests.get(urljoin(GITHUB_USERS, args['<username>']))
-    except ConnectionError as e:
+    except ConnectionErrorException as e:
         print('Connection Error from requests. Request again, please.')
         print(e)
 
@@ -82,9 +78,8 @@ def main():
     elif r.status_code == 200:
         return dispatch(args, response=r)
     else:
-        print('no')
+        raise UnknownStausCodeException
 
 
 if __name__ == '__main__':
     main()
-
