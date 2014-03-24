@@ -3,7 +3,7 @@
 
 """
 test_spelling
----------
+-------------
 
 Tests for `respect.spelling` module.
 """

@@ -59,7 +59,6 @@ def dispatch(args, response=None, session=None):
                     break
                 rounds += 1
             stars = 0
-            # TODO: sort by stars. reverse set to True is because of desc order.
             sorted_result = sorted(result, key=lambda x: x['stargazers_count'], reverse=True)
             if args['--verbose']:
                 print("The stars grouped into repositories:\n")
