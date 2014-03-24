@@ -22,9 +22,18 @@ else:
 
 class TestEmptyQualifiers(unittest.TestCase):
 
-    def test_empty_qualifiers(self):
+    def test_none_qualifiers(self):
         qualifiers = utils.sanitize_qualifiers(repos=None, followers=None, language=None)
         self.assertEqual(qualifiers, '')
+
+    def test_empty_repos(self):
+        qualifiers = utils.sanitize_qualifiers(repos='', followers=None, language=None)
+        self.assertEqual(qualifiers, '')
+
+    def test_empty_followers(self):
+        qualifiers = utils.sanitize_qualifiers(repos=None, followers='', language=None)
+        self.assertEqual(qualifiers, '')
+
 
 class TestInvalidUsername(unittest.TestCase):
 
