@@ -6,17 +6,12 @@ import sys
 
 import requests
 
-if sys.version < '3':
-    from urlparse import urljoin
-else:
-    from urllib.parse import urljoin
-
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
 LANGUAGES = ('javascript', 'ruby', 'python', 'java', 'php', 'c', 'c++', 'objective-c', 'shell',
              'c#')
-BASE_URL = 'https://api.github.com/'
-SEARCH_USERS_URL = '/search/users'
+
+GITHUB_SEARCH_USERS = 'https://api.github.com/search/users'
 
 
 def starred_users_by_languages():
@@ -26,11 +21,9 @@ def starred_users_by_languages():
 
     """
     for language in LANGUAGES:
-        #r = requests.get('https://api.github.com/search/users?q=language:%s&sort=stars&per_page=100' % (language,))
-
         params = {'q': "language:{0}".format(language), 'sort': 'stars', 'per_page': 100}
         try:
-            r = requests.get(urljoin(BASE_URL, SEARCH_USERS_URL), params=params)
+            r = requests.get(GITHUB_SEARCH_USERS, params=params)
             yield r.json()['items']
         except Exception:
             # because of py3, getting the exception object through sys.exc_info()
