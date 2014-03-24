@@ -10,3 +10,7 @@ Respect
 
 
 A command-line tool to interact with the Github API. Getting to know software developers you ``respect``.
+
+.. code:: python
+
+  $ respect audreyr
