@@ -35,6 +35,21 @@ class TestEmptyQualifiers(unittest.TestCase):
         self.assertEqual(qualifiers, '')
 
 
+class TestSanitizedQualifiers(unittest.TestCase):
+
+    def test_sanitized_repos_qualifiers(self):
+        qualifiers = utils.sanitize_qualifiers(repos='+20')
+        self.assertEqual(qualifiers, 'repos:>20 ')
+
+    def test_sanitized_followers_qualifiers(self):
+        qualifiers = utils.sanitize_qualifiers(followers='-20')
+        self.assertEqual(qualifiers, 'followers:<20 ')
+
+    def test_sanitized_language_qualifiers(self):
+        qualifiers = utils.sanitize_qualifiers(language='python')
+        self.assertEqual(qualifiers, 'language:python ')
+
+
 class TestInvalidUsername(unittest.TestCase):
 
     def test_dot_invalid_username(self):
