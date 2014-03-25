@@ -23,14 +23,8 @@ else:
 class TestDispatchBioNotResponseProvided(unittest.TestCase):
 
     def test_dispatch_bio_not_response_provided(self):
-        args = {'--followers': '',
-                '--help': False,
-                '--language': '',
-                '--repos': '',
-                '--verbose': False,
-                '<username>': 'oubiga',
-                'bio': True,
-                'repos': False,
+        args = {'--followers': '', '--help': False, '--language': '', '--repos': '',
+                '--verbose': False, '<username>': 'oubiga', 'bio': True, 'repos': False,
                 'stars': False}
         output = dispatch.dispatch(args, response=None, session=None)
         self.assertEqual(output, None)
@@ -39,17 +33,12 @@ class TestDispatchBioNotResponseProvided(unittest.TestCase):
 class TestDispatchStarsNotResponseProvided(unittest.TestCase):
 
     def test_dispatch_stars_not_response_provided(self):
-        args = {'--followers': '',
-                '--help': False,
-                '--language': '',
-                '--repos': '',
-                '--verbose': False,
-                '<username>': 'oubiga',
-                'bio': False,
-                'repos': False,
+        args = {'--followers': '', '--help': False, '--language': '', '--repos': '',
+                '--verbose': False, '<username>': 'oubiga', 'bio': False, 'repos': False,
                 'stars': True}
         output = dispatch.dispatch(args, response=None, session=None)
         self.assertEqual(output, None)
+
 
 if __name__ == '__main__':
     unittest.main()
