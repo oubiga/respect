@@ -14,23 +14,6 @@ LANGUAGES = ('javascript', 'ruby', 'python', 'java', 'php', 'c', 'c++', 'objecti
 GITHUB_SEARCH_USERS = 'https://api.github.com/search/users'
 
 
-def starred_users_by_languages():
-    """
-    Generator which returns the most starred users by each language.
-    Used in misspelling input before triger warning prompt to the user. 
-
-    """
-    for language in LANGUAGES:
-        params = {'q': "language:{0}".format(language), 'sort': 'stars', 'per_page': 100}
-        try:
-            r = requests.get(GITHUB_SEARCH_USERS, params=params)
-            yield r.json()['items']
-        except Exception:
-            # because of py3, getting the exception object through sys.exc_info()
-            e = sys.exc_info(1)
-            pass
-
-
 def spellchecker(word):
     """
     Looks for possible typos, i.e., deletion, insertion, transposition and alteration.
