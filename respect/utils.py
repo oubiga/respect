@@ -89,13 +89,13 @@ def sanitize_qualifiers(repos=None, followers=None, language=None):
 
     if repos:
         qualifiers += 'repos:{} '.format(repos)
-        qualifiers = re.sub(r"^([+])([=a-zA-Z0-9]+)$", r">\2", qualifiers)
-        qualifiers = re.sub(r"^([-])([=a-zA-Z0-9]+)$", r"<\2", qualifiers)
+        qualifiers = re.sub(r"([+])([=a-zA-Z0-9]+)", r">\2", qualifiers)
+        qualifiers = re.sub(r"([-])([=a-zA-Z0-9]+)", r"<\2", qualifiers)
 
     if followers:
         qualifiers += 'followers:{} '.format(followers)
-        qualifiers = re.sub(r"^([+])([=a-zA-Z0-9]+)$", r">\2", qualifiers)
-        qualifiers = re.sub(r"^([-])([=a-zA-Z0-9]+)$", r"<\2", qualifiers)
+        qualifiers = re.sub(r"([+])([=a-zA-Z0-9]+)", r">\2", qualifiers)
+        qualifiers = re.sub(r"([-])([=a-zA-Z0-9]+)", r"<\2", qualifiers)
 
     try:
         if language in ALLOWED_LANGUAGES and not language == '':
@@ -106,7 +106,7 @@ def sanitize_qualifiers(repos=None, followers=None, language=None):
             raise AllowedLanguagesException
     except AllowedLanguagesException as e:
         print(e)
-
+    print(qualifiers)
     return qualifiers
 
 
