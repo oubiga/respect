@@ -20,9 +20,9 @@ else:
     import unittest
 
 
-class TestDispatchNotResponseProvided(unittest.TestCase):
+class TestDispatchBioNotResponseProvided(unittest.TestCase):
 
-    def test_dispatch_not_response_provided(self):
+    def test_dispatch_bio_not_response_provided(self):
         args = {'--followers': '',
                 '--help': False,
                 '--language': '',
@@ -35,6 +35,21 @@ class TestDispatchNotResponseProvided(unittest.TestCase):
         output = dispatch.dispatch(args, response=None, session=None)
         self.assertEqual(output, None)
 
+
+class TestDispatchStarsNotResponseProvided(unittest.TestCase):
+
+    def test_dispatch_stars_not_response_provided(self):
+        args = {'--followers': '',
+                '--help': False,
+                '--language': '',
+                '--repos': '',
+                '--verbose': False,
+                '<username>': 'oubiga',
+                'bio': False,
+                'repos': False,
+                'stars': True}
+        output = dispatch.dispatch(args, response=None, session=None)
+        self.assertEqual(output, None)
 
 if __name__ == '__main__':
     unittest.main()
