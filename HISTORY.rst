@@ -11,4 +11,4 @@ Release History
 0.0.2-alpha (2014-03-25)
 ++++++++++++++++++
 
-* Uploaded to PyPI
+* First uploaded to PyPI

@@ -35,7 +35,7 @@ def dispatch(args, response=None, session=None):
                       output['followers'], "s"[int(output['followers'])==1:], output['following'],
                       'person' if abs(int(output['following'])) == 1 else 'people', 
                       output['public_repos']))
-        except KeyError as e:
+        except (KeyError, AttributeError) as e:
             print("\n@{0} name is blank.\n".format(user,))
 
     elif args['<username>'] and args['stars']:

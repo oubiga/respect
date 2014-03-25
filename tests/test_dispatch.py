@@ -20,10 +20,20 @@ else:
     import unittest
 
 
-class TestDispatchNotAllowedUsername(unittest.TestCase):
+class TestDispatchNotResponseProvided(unittest.TestCase):
 
-    def test_dispatch_not_allowed_username(self):
-        pass
+    def test_dispatch_not_response_provided(self):
+        args = {'--followers': '',
+                '--help': False,
+                '--language': '',
+                '--repos': '',
+                '--verbose': False,
+                '<username>': 'oubiga',
+                'bio': True,
+                'repos': False,
+                'stars': False}
+        output = dispatch.dispatch(args, response=None, session=None)
+        self.assertEqual(output, None)
 
 
 if __name__ == '__main__':
