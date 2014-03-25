@@ -62,5 +62,16 @@ class TestDispatchUsernameInvalidSession(unittest.TestCase):
         self.assertEqual(output, None)
 
 
+class TestDispatchBadResponse(unittest.TestCase):
+
+    def test_dispatch_bad_response(self):
+        response = requests.get('https://api.github.com/user')
+        args = {'--followers': '', '--help': False, '--language': '', '--repos': '',
+                '--verbose': False, '<username>': 'oubiga', 'bio': True, 'repos': False,
+                'stars': False}
+        output = dispatch.dispatch(args, response=response)
+        self.assertEqual(output, None)
+
+
 if __name__ == '__main__':
     unittest.main()
