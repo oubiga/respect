@@ -1,6 +1,4 @@
-=======
-Respect
-=======
+.. image:: https://raw.githubusercontent.com/oubiga/respect/master/respect-logo.png
 
 .. image:: https://badge.fury.io/py/respect.png
         :target: http://badge.fury.io/py/respect
@@ -12,7 +10,7 @@ Respect
         :target: https://coveralls.io/r/oubiga/respect?branch=master
 
 
-A command-line tool to interact with the Github API. Getting to know software developers you ``respect``.
+A command-line tool to interact with the Github API. Getting to know software developers you **respect**
 
 .. code:: shell
 
@@ -33,7 +31,7 @@ A command-line tool to interact with the Github API. Getting to know software de
 
 .. code:: shell
 
-  $ respect Roy --repos +10 --followers +200 --language pyhton
+  $ respect Roy --repos +10 --followers +200 --language python
 
 .. code:: shell
 
