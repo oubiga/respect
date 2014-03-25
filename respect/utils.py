@@ -74,18 +74,18 @@ def sanitize_qualifiers(repos=None, followers=None, language=None):
     qualifiers = ''
 
     if repos:
-        qualifiers += 'repos:{} '.format(repos)
+        qualifiers += 'repos:{0} '.format(repos)
         qualifiers = re.sub(r"([+])([=a-zA-Z0-9]+)", r">\2", qualifiers)
         qualifiers = re.sub(r"([-])([=a-zA-Z0-9]+)", r"<\2", qualifiers)
 
     if followers:
-        qualifiers += 'followers:{} '.format(followers)
+        qualifiers += 'followers:{0} '.format(followers)
         qualifiers = re.sub(r"([+])([=a-zA-Z0-9]+)", r">\2", qualifiers)
         qualifiers = re.sub(r"([-])([=a-zA-Z0-9]+)", r"<\2", qualifiers)
 
     try:
         if language in ALLOWED_LANGUAGES and not language == '':
-            qualifiers += 'language:{} '.format(language)
+            qualifiers += 'language:{0} '.format(language)
         elif language == '':
             qualifiers += ''
         else:
