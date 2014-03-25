@@ -42,10 +42,21 @@ class TestDispatchStarsNotResponseProvided(unittest.TestCase):
 
 class TestDispatchReposInvalidSession(unittest.TestCase):
 
-    def test_dispatch_invalid_session(self):
+    def test_dispatch_repos_invalid_session(self):
         session = requests.Session()
         args = {'--followers': '', '--help': False, '--language': '', '--repos': '',
                 '--verbose': False, '<username>': 'oubiga', 'bio': False, 'repos': True,
+                'stars': False}
+        output = dispatch.dispatch(args, response=None, session=session)
+        self.assertEqual(output, None)
+
+
+class TestDispatchUsernameInvalidSession(unittest.TestCase):
+
+    def test_dispatch_username_invalid_session(self):
+        session = requests.Session()
+        args = {'--followers': '', '--help': False, '--language': '', '--repos': '',
+                '--verbose': False, '<username>': 'oubiga', 'bio': False, 'repos': False,
                 'stars': False}
         output = dispatch.dispatch(args, response=None, session=session)
         self.assertEqual(output, None)
