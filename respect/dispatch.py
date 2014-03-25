@@ -14,7 +14,6 @@ from .utils import login
 
 
 def dispatch(args, response=None, session=None):
-    print(args)
     if args['<username>'] and args['bio']:
         try:
             user = args['<username>']
@@ -22,7 +21,6 @@ def dispatch(args, response=None, session=None):
             created_at = datetime.strptime(output['created_at'], "%Y-%m-%dT%H:%M:%SZ")
             joined = created_at.strftime("%b %d, %Y")
             if output['name']:
-
                 print("\n{0} (from {1}), aka @{2}, joined Github on {3}, has {4} follower{5}, " 
                       "is following {6} {7} and has {8} public repositories.\n"
                       .format(output['name'].title().encode('utf-8'),

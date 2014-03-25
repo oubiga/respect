@@ -106,7 +106,7 @@ def sanitize_qualifiers(repos=None, followers=None, language=None):
             raise AllowedLanguagesException
     except AllowedLanguagesException as e:
         print(e)
-    print(qualifiers)
+
     return qualifiers
 
 
@@ -118,4 +118,3 @@ def validate_username(username):
     """
     result = re.match(r"^[a-zA-Z0-9][-a-zA-Z0-9]+$", username)
     return not result == None
-
