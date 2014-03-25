@@ -51,5 +51,22 @@ class TestDispatchStarsNotResponseProvided(unittest.TestCase):
         output = dispatch.dispatch(args, response=None, session=None)
         self.assertEqual(output, None)
 
+
+class TestDispatchReposNotResponseProvided(unittest.TestCase):
+
+    def test_dispatch_repos_not_response_provided(self):
+        args = {'--followers': '',
+                '--help': False,
+                '--language': '',
+                '--repos': '',
+                '--verbose': False,
+                '<username>': 'oubiga',
+                'bio': False,
+                'repos': True,
+                'stars': False}
+        output = dispatch.dispatch(args, response=None, session=None)
+        self.assertEqual(output, None)
+
+
 if __name__ == '__main__':
     unittest.main()
