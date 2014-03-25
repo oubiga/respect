@@ -11,11 +11,11 @@ Respect
 
 A command-line tool to interact with the Github API. Getting to know software developers you ``respect``.
 
-.. code:: python
+.. code:: shell
 
   $ respect audreyr bio
 
-.. code:: python
+.. code:: shell
 
   Audrey Roy (from Inland Empire, CA), aka @audreyr, joined Github on Apr 17, 2009,
   has 389 followers, is following 210 people and has 90 public repositories.
