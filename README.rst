@@ -2,6 +2,9 @@
 Respect
 =======
 
+.. image:: https://badge.fury.io/py/respect.png
+        :target: http://badge.fury.io/py/respect
+
 .. image:: https://travis-ci.org/oubiga/respect.png?branch=master
         :target: https://travis-ci.org/oubiga/respect
 
