@@ -46,5 +46,12 @@ class TestInvalidUsername(unittest.TestCase):
         self.assertFalse(validation)
 
 
+class TestLogin(unittest.TestCase):
+
+    def test_invalid_login(self):
+        output = utils.login(404, {'<username>': 'oubiga'})
+        self.assertIsInstance(output, requests.Session)
+
+
 if __name__ == '__main__':
     unittest.main()

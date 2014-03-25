@@ -46,6 +46,7 @@ ALLOWED_LANGUAGES = ['', 'abap', 'actionscript', 'ada', 'agda', 'antlr', 'apex',
 def login(status, args=None):
     print('\nThis request needs user authentication:\n')
     message = None
+    s = requests.Session()
     while status == 401:
         if message:
             print(message)
@@ -55,7 +56,6 @@ def login(status, args=None):
         else:
             username = input(prompt.encode('utf-8')).decode('utf-8')
         password = getpass("Github password (hidden): ")
-        s = requests.Session()
         s.auth = (username, password)
         r = s.get(urljoin(GITHUB_USERS, args['<username>']))
         status = r.status_code
