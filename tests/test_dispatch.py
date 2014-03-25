@@ -40,5 +40,16 @@ class TestDispatchStarsNotResponseProvided(unittest.TestCase):
         self.assertEqual(output, None)
 
 
+class TestDispatchReposInvalidSession(unittest.TestCase):
+
+    def test_dispatch_invalid_session(self):
+        session = requests.Session()
+        args = {'--followers': '', '--help': False, '--language': '', '--repos': '',
+                '--verbose': False, '<username>': 'oubiga', 'bio': False, 'repos': True,
+                'stars': False}
+        output = dispatch.dispatch(args, response=None, session=session)
+        self.assertEqual(output, None)
+
+
 if __name__ == '__main__':
     unittest.main()
