@@ -71,20 +71,6 @@ def sanitize_qualifiers(repos=None, followers=None, language=None):
     qualifiers = c repos:+42 followers:+1000 language:
     params = {'q': 'tom repos:>42 followers:>1000'}
     '''
-    try:
-        repos = repos
-    except ValueError as e:
-        repos = None
-    except TypeError as e:
-        repos = None
-
-    try:
-        followers = followers
-    except ValueError as e:
-        followers = None
-    except TypeError as e:
-        followers = None
-
     qualifiers = ''
 
     if repos:
