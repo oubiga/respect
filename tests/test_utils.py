@@ -45,5 +45,6 @@ class TestInvalidUsername(unittest.TestCase):
         validation = utils.validate_username('ou_bi_ga')
         self.assertFalse(validation)
 
+
 if __name__ == '__main__':
     unittest.main()
