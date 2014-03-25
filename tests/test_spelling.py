@@ -20,13 +20,6 @@ else:
     import unittest
 
 
-class TestResultsStarredUsersByLanguages(unittest.TestCase):
-
-    def test_generation_results_starred_users_languages(self):
-        results = spelling.starred_users_by_languages()
-        self.assertIsInstance(results, types.GeneratorType)
-
-
 class TestGuessesSpellChecker(unittest.TestCase):
 
     def test_guesses_spellchecker(self):
