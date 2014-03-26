@@ -16,7 +16,7 @@ except ImportError:
 with open('README.rst') as f:
     readme = f.read()
 with open('HISTORY.rst') as f:
-    history = f.read().replace('.. :changelog:', '')
+    history = f.read()
 
 requirements = ['docopt>=0.6.1', 'requests>=2.2.1']
 test_requirements = []

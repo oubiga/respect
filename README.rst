@@ -1,49 +1,45 @@
-=============
-Cookiecutter
-=============
+.. image:: https://raw.githubusercontent.com/oubiga/respect/master/respect-logo.png
 
-.. image:: https://badge.fury.io/py/cookiecutter.png
-    :target: http://badge.fury.io/py/cookiecutter
+.. image:: https://badge.fury.io/py/respect.png
+        :target: http://badge.fury.io/py/respect
 
-.. image:: https://travis-ci.org/audreyr/cookiecutter.png?branch=master
-        :target: https://travis-ci.org/audreyr/cookiecutter
+.. image:: https://travis-ci.org/oubiga/respect.png?branch=master
+        :target: https://travis-ci.org/oubiga/respect
 
-.. image:: https://pypip.in/d/cookiecutter/badge.png
-        :target: https://crate.io/packages/cookiecutter?version=latest
-
-.. image:: https://coveralls.io/repos/audreyr/cookiecutter/badge.png?branch=master
-        :target: https://coveralls.io/r/audreyr/cookiecutter?branch=master
+.. image:: https://coveralls.io/repos/oubiga/respect/badge.png?branch=master
+        :target: https://coveralls.io/r/oubiga/respect?branch=master
 
 
-A command-line utility that creates projects from **cookiecutters** (project
-templates), e.g. creating a Python package project from a Python package project template.
+A command-line tool to interact with the Github API. Getting to know software developers you **respect**
 
-* Documentation: http://cookiecutter.rtfd.org
-* GitHub: https://github.com/audreyr/cookiecutter
-* Free software: BSD license
-* PyPI: https://pypi.python.org/pypi/cookiecutter
+    `shell`
 
-.. image:: https://raw.github.com/audreyr/cookiecutter/aa309b73bdc974788ba265d843a65bb94c2e608e/cookiecutter_medium.png
+        $ respect audreyr bio
 
-Features
---------
+    `shell`
 
-Did someone say features?
+        Audrey Roy (from Inland Empire, CA), aka @audreyr, joined Github on Apr 17, 2009,
+        has 389 followers, is following 210 people and has 90 public repositories.
 
-* Cross-platform: Windows, Mac, and Linux are officially supported.
+    `shell`
 
-* Works with Python 2.6, 2.7, 3.3, and PyPy. *(But you don't have to know/write Python
-  code to use Cookiecutter.)*
+        $ respect audreyr stars
 
-* Project templates can be in any programming language or markup format:
-  Python, JavaScript, Ruby, CoffeeScript, RST, Markdown, CSS, HTML, you name
-  it. You can use multiple languages in the same project template.
+    `shell`
 
-* Simple command line usage:
+        @audreyr has 5896 stars in total.
 
-    .. code-block:: bash
+    `shell`
 
-        # Create project from the cookiecutter-pypackage.git repo template
-        # You'll be prompted to enter values.
-        # Then it'll create your Python package based on those values.
-        $ cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git
+        $ respect Roy --repos +10 --followers +200 --language python
+
+    `shell`
+
+        This request needs user authentication:
+
+        Github username: oubiga
+        Github password (hidden):
+        The users related to "Roy" are:
+
+        @audreyr
+        @binux
