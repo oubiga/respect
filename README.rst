@@ -14,6 +14,10 @@ A command-line tool to interact with the Github API. Getting to know software de
 
 .. code-block:: shell
 
+    $ pip install respect
+
+.. code-block:: shell
+
     $ respect audreyr bio
 
 .. code-block:: shell
