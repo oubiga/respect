@@ -14,7 +14,7 @@ A command-line tool to interact with the Github API. Getting to know software de
 
 .. code-block:: shell
 
-    $ pip install --pre respect
+    $ pip install respect
 
 .. code-block:: shell
 
