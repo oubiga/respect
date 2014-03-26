@@ -12,34 +12,34 @@
 
 A command-line tool to interact with the Github API. Getting to know software developers you **respect**
 
-    .. code-block:: shell
+.. code-block:: shell
 
-        $ respect audreyr bio
+    $ respect audreyr bio
 
-    .. code-block:: shell
+.. code-block:: shell
 
-        Audrey Roy (from Inland Empire, CA), aka @audreyr, joined Github on Apr 17, 2009,
-        has 389 followers, is following 210 people and has 90 public repositories.
+    Audrey Roy (from Inland Empire, CA), aka @audreyr, joined Github on Apr 17, 2009,
+    has 389 followers, is following 210 people and has 90 public repositories.
 
-    .. code-block:: shell
+.. code-block:: shell
 
-        $ respect audreyr stars
+    $ respect audreyr stars
 
-    .. code-block:: shell
+.. code-block:: shell
 
-        @audreyr has 5896 stars in total.
+    @audreyr has 5896 stars in total.
 
-    .. code-block:: shell
+.. code-block:: shell
 
-        $ respect Roy --repos +10 --followers +200 --language python
+    $ respect Roy --repos +10 --followers +200 --language python
 
-    .. code-block:: shell
+.. code-block:: shell
 
-        This request needs user authentication:
+    This request needs user authentication:
 
-        Github username: oubiga
-        Github password (hidden):
-        The users related to "Roy" are:
+    Github username: oubiga
+    Github password (hidden):
+    The users related to "Roy" are:
 
-        @audreyr
-        @binux
+    @audreyr
+    @binux
