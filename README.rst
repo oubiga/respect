@@ -12,34 +12,22 @@
 
 A command-line tool to interact with the Github API. Getting to know software developers you **respect**
 
-    `shell`
+    `$ respect audreyr bio`
 
-        $ respect audreyr bio
+    `Audrey Roy (from Inland Empire, CA), aka @audreyr, joined Github on Apr 17, 2009,
+    has 389 followers, is following 210 people and has 90 public repositories.`
 
-    `shell`
+    `$ respect audreyr stars`
 
-        Audrey Roy (from Inland Empire, CA), aka @audreyr, joined Github on Apr 17, 2009,
-        has 389 followers, is following 210 people and has 90 public repositories.
+    `@audreyr has 5896 stars in total.`
 
-    `shell`
+    `$ respect Roy --repos +10 --followers +200 --language python`
 
-        $ respect audreyr stars
+    `This request needs user authentication:
 
-    `shell`
+    Github username: oubiga
+    Github password (hidden):
+    The users related to "Roy" are:
 
-        @audreyr has 5896 stars in total.
-
-    `shell`
-
-        $ respect Roy --repos +10 --followers +200 --language python
-
-    `shell`
-
-        This request needs user authentication:
-
-        Github username: oubiga
-        Github password (hidden):
-        The users related to "Roy" are:
-
-        @audreyr
-        @binux
+    @audreyr
+    @binux`
