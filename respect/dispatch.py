@@ -18,7 +18,8 @@ def dispatch(args, response=None, session=None):
         try:
             user = args['<username>']
             output = response.json()
-            created_at = datetime.strptime(output['created_at'], "%Y-%m-%dT%H:%M:%SZ")
+            created_at = datetime.strptime(
+                output['created_at'], "%Y-%m-%dT%H:%M:%SZ")
             joined = created_at.strftime("%b %d, %Y")
             if output['name']:
                 print("\n{0} (from {1}), aka @{2}, joined Github on {3}, has {4} follower{5}, " 

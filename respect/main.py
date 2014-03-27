@@ -7,7 +7,7 @@ from getpass import getpass
 from datetime import datetime
 import pprint
 
-from docopt import docopt 
+from docopt import docopt
 import requests
 
 from .spelling import spellchecker
@@ -63,7 +63,8 @@ def main():
         print("processing...")
     else:
         print("@"+args['<username>'], "is not a valid username.")
-        print("Username may only contain alphanumeric ASCII characters or dashes and cannot begin with a dash.")
+        print("Username may only contain alphanumeric ASCII characters or "
+              "dashes and cannot begin with a dash.")
         return
     try:
         r = requests.get(urljoin(GITHUB_USERS, args['<username>']))
