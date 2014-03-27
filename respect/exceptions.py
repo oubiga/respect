@@ -8,11 +8,13 @@ respect.exceptions
 All exceptions used in the Respect code base are defined here.
 """
 
+
 class RespectException(Exception):
     """
     Base exception class. All Cookiecutter-specific exceptions should subclass
     this class.
     """
+
 
 class AllowedLanguagesException(RespectException):
     """
@@ -20,11 +22,13 @@ class AllowedLanguagesException(RespectException):
 
     """
 
+
 class UnknownStausCodeException(RespectException):
     """
     Raseid when the status code is not 404, 403 or 200.
 
     """
+
 
 class ConnectionErrorException(RespectException):
     """
