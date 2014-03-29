@@ -8,9 +8,6 @@ import requests
 
 
 ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-LANGUAGES = (
-    'javascript', 'ruby', 'python', 'java', 'php', 'c', 'c++', 'objective-c',
-    'shell', 'c#')
 
 GITHUB_SEARCH_USERS = 'https://api.github.com/search/users'
 
