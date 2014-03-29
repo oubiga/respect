@@ -27,7 +27,7 @@ else:
 
 GITHUB_USERS = 'https://api.github.com/users/'
 
-ALLOWED_LANGUAGES = [
+ALLOWED_LANGUAGES = (
     '', 'abap', 'actionscript', 'ada', 'agda', 'antlr', 'apex', 'applescript',
     'arc', 'arduino', 'asp', 'assembly', 'augeas', 'autohotkey', 'autoit',
     'awk', 'blitzbasic', 'bluespec', 'boo', 'brightscript', 'bro', 'c', 'c#',
@@ -45,7 +45,7 @@ ALLOWED_LANGUAGES = [
     'rouge', 'ruby', 'rust', 'scala', 'scheme', 'scilab', 'self', 'shell',
     'slash', 'smalltalk', 'squirrel', 'supercollider', 'tcl', 'tex', 'turing',
     'txl', 'typescript', 'unrealscript', 'vala', 'verilog', 'vhdl', 'viml',
-    'volt', 'wisp', 'xbase', 'xc', 'xml', 'xproc', 'xquery', 'xslt', 'xtend']
+    'volt', 'wisp', 'xbase', 'xc', 'xml', 'xproc', 'xquery', 'xslt', 'xtend')
 
 
 def login(status, args=None):
