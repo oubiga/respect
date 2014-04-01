@@ -34,7 +34,7 @@ A command-line tool to interact with the Github API. Getting to know software de
 
 .. code-block:: shell
 
-    @audreyr has 5896 stars in total.
+    @audreyr has 5940 stars in total.
 
 .. code-block:: shell
 
